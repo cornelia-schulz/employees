@@ -1,14 +1,14 @@
 <template>
   <main id="employees">
       <div class="cards" v-for="employee in employees" v-bind:key="employee.id">
-        <div class="single-card" v-b-modal.modalEmployee>
+        <div class="single-card" v-b-modal="'modalEmployee' + employee.id">
           <img :src="employee.avatar">
           <div class="card-text">
             <h5 class="bold">{{ employee.firstName }} {{ employee.lastName }}</h5>
             <p class="card-text">{{ employee.bio }}</p>
           </div>
         </div>
-          <b-modal id="modalEmployee">
+          <b-modal :id="'modalEmployee'+employee.id">
             <Employee :employee="employee" />
           </b-modal>
     </div>

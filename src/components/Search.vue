@@ -29,7 +29,8 @@ export default {
       },
       computed: {
           getSelected: function() {
-              let vm = this
+              let vm = this;
+              console.log("aaaa")
               vm.$emit('clicked', vm.selected)
           }
       }

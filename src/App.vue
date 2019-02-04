@@ -48,3 +48,10 @@ export default {
   display: none !important;
 }
 </style>
+
+<style>
+.modal-footer {
+  display: none !important;
+}
+
+</style>
