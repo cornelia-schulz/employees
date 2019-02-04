@@ -1,10 +1,10 @@
 
 <template>
-  <div>
+  <div class="container">
     <Header :companyName="data.companyInfo.companyName" 
     :companyMotto="data.companyInfo.companyMotto"
     :companyEst="data.companyInfo.companyEst"/>
-    <Search />
+    <Search :employees="data.employees" @clicked="onSearch" />
     <Employees :employees="data.employees" />
   </div>
 </template>
@@ -18,7 +18,15 @@ import data from './sample-data.json'
 export default {
   data() {
     return {
-      data
+      data,
+      search: String
+    }
+  },
+  computed: {
+    onSearch: function(value) {
+      let vm = this
+      vm.search = value
+      return value
     }
   },
   components: {
@@ -29,10 +37,14 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-size: 18px;
-  font-family: 'Roboto', sans-serif;
-  color: blue;
+<style scoped>
+.container {
+  width: 95%;
+  border-right: 1px solid lightgray;
+  padding: 0px;
+}
+
+.modal-footer {
+  display: none !important;
 }
 </style>

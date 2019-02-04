@@ -1,16 +1,16 @@
 <template>
   <main id="employees">
-    <div class="cards" v-for="employee in employees" v-bind:key="employee.id">
-      <div class="card" v-b-modal.modalEmployee>
-        <img :src="employee.avatar">
-        <div class="card-text">
-          <h3>{{ employee.firstName }} {{ employee.lastName }}</h3>
-          <p class="card-text">{{ employee.bio }}</p>
+      <div class="cards" v-for="employee in employees" v-bind:key="employee.id">
+        <div class="single-card" v-b-modal.modalEmployee>
+          <img :src="employee.avatar">
+          <div class="card-text">
+            <h5 class="bold">{{ employee.firstName }} {{ employee.lastName }}</h5>
+            <p class="card-text">{{ employee.bio }}</p>
+          </div>
         </div>
-      </div>
-      <b-modal id="modalEmployee">
-        <Employee :employee="employee" />
-      </b-modal>
+          <b-modal id="modalEmployee">
+            <Employee :employee="employee" />
+          </b-modal>
     </div>
   </main>
 </template>
@@ -23,7 +23,7 @@ import Employee from './Employee.vue'
 export default {
   name: 'Employees',
   props: {
-    employees: []
+    employees: Array
   },
   components: {
     Employee
@@ -34,26 +34,44 @@ export default {
 <style scoped>
 main {
   width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding-top: 2%;
 }
 
 .cards {
-  width: 100%;
   display: flex;
-  flex-direction: row;
+  flex: 1;
 }
 
-.card {
+.single-card {
   display: flex;
-  width: 300px;
-  justify-content: flex-start;
   flex-direction: row;
+  border: 1px solid lightgray;
+  height: 110px;
+  margin: 3%;
+  overflow: hidden;
+  flex-grow: 1;
+  width: 33%;
 }
 
 img {
+  width: 110px;
+  border: 1px solid lightgray;
+}
 
+.bold {
+  font-weight: 500;
 }
 
 .card-text {
-
+  margin: 1%;
+  width: 200px;
 }
+
+.modal-footer {
+  display: none !important;
+}
+
 </style>

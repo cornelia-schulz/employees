@@ -17,7 +17,7 @@ export default {
   props: {
         companyName: String,
         companyMotto: String,
-        companyEst: Date
+        companyEst: String
     },
   methods: {
       formatDate: function(str) {
@@ -30,6 +30,7 @@ export default {
 
 <style scoped>
 header {
+    width: 100%;
     font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: space-between;
