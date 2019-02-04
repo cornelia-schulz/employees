@@ -2,19 +2,21 @@
 <template>
   <div>
     <Header />
+    <Search />
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
+import Search from './components/Search.vue'
 export default {
   data() {
     return {
-      message: 'Hello World',
     }
   },
   components: {
-      Header
+      Header,
+      Search
   }
 };
 </script>

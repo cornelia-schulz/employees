@@ -23,7 +23,7 @@ export default {
 
 <style>
 header {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: space-between;
     background-color: rgba(235,235,235,1);
@@ -34,7 +34,7 @@ header {
 }
 
 h1 {
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 1%;
 }
 
