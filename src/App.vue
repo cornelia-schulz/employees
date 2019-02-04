@@ -4,7 +4,7 @@
     <Header :companyName="data.companyInfo.companyName" 
     :companyMotto="data.companyInfo.companyMotto"
     :companyEst="data.companyInfo.companyEst"/>
-    <Search :employees="data.employees" @clicked="onSearch" />
+    <Search :employees="data.employees" />
     <Employees :employees="data.employees" />
   </div>
 </template>
@@ -14,6 +14,7 @@ import Header from './components/Header.vue'
 import Search from './components/Search.vue'
 import Employees from './components/Employees.vue'
 import data from './sample-data.json'
+// import { serverBus } from './main';
 
 export default {
   data() {
@@ -22,13 +23,30 @@ export default {
       search: String
     }
   },
-  computed: {
-    onSearch: function(value) {
-      let vm = this
-      vm.search = value
-      return value
-    }
-  },
+  // created() {
+  //   serverBus.$on('sortSelected', (selected) => {
+  //     this.search = selected
+  //   })
+  // },
+  // methods: {
+  //   getSorted: function() {
+  //     data.employees.sort(function(a, b) {
+  //       let keyA = a.firstName.toUpperCase()
+  //       console.log(keyA)
+  //       let keyB = b.firstName.toUpperCase()
+  //           if (keyA < keyB) {
+  //             console.log(-1)
+  //             return -1
+  //           } 
+  //           if (keyA > keyB) {
+  //             console.log(1)
+  //             return 1
+  //           }
+  //           return 0
+  //     })
+  //     return data.employees
+  //   }
+  // },
   components: {
       Header,
       Search,

@@ -16,16 +16,16 @@
 
 <script>
 export default {
-  name: 'Employee',
-  props: {
-    employee: {}
-  },
-  methods: {
-      formatDate: function(str) {
-          let words = str.split('T')
-          return words[0]
-      }
-  }
+    name: 'Employee',
+    props: {
+        employee: {}
+    },
+    methods: {
+        formatDate: function(str) {
+            let words = str.split('T')
+            return words[0]
+        }
+    }
 }
 </script>
 

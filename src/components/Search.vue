@@ -5,7 +5,7 @@
         </div>
         <div class="filters">
             <label for="sort">Sort by:</label>
-            <select v-model="selected">
+            <select v-model="selected" @change="getSelected($event)">
                 <option value="firstName">first name</option>
                 <option value="lastName">last name</option>
                 <option value="jobTitle">job title</option>
@@ -17,23 +17,24 @@
 </template>
 
 <script>
+import {
+    serverBus
+} from '../main.js'
 export default {
-  name: 'Search',
-  data() {
-      return{
-          selected: 'firstName'
-      }
-  },
-  props: {
-          employees: Array
-      },
-      computed: {
-          getSelected: function() {
-              let vm = this;
-              console.log("aaaa")
-              vm.$emit('clicked', vm.selected)
-          }
-      }
+    name: 'Search',
+    data() {
+        return {
+            selected: 'firstName'
+        }
+    },
+    props: {
+        employees: Array
+    },
+    methods: {
+        getSelected: function(event) {
+            serverBus.$emit('sortSelected', event.target.value)
+        }
+    }
 }
 </script>
 

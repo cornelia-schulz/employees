@@ -17,17 +17,40 @@
 
 <script>
 import employees from '../sample-data.json'
-import bCardGroup from 'bootstrap-vue/es/components/card/card-group'
-import bCard from 'bootstrap-vue/es/components/card/card'
 import Employee from './Employee.vue'
+import {
+    serverBus
+} from '../main.js'
 export default {
-  name: 'Employees',
-  props: {
-    employees: Array
-  },
-  components: {
-    Employee
-  }
+    name: 'Employees',
+    props: {
+        employees: Array
+    },
+    components: {
+        Employee
+    },
+    created() {
+        this.sort('firstName')
+        var vm = this
+        serverBus.$on('sortSelected', (selected) => {
+            vm.sort(selected)
+        })
+    },
+    methods: {
+      sort: function(selected) {
+        this.employees.sort(function(a, b) {
+          let keyA = a[selected].toUpperCase()
+          let keyB = b[selected].toUpperCase()
+          if (keyA < keyB) {
+              return -1
+          }
+          if (keyA > keyB) {
+              return 1
+          }
+          return 0
+      })
+      }
+    }
 }
 </script>
 

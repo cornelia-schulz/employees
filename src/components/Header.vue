@@ -13,18 +13,18 @@
 
 <script>
 export default {
-  name: 'Header',
-  props: {
+    name: 'Header',
+    props: {
         companyName: String,
         companyMotto: String,
         companyEst: String
     },
-  methods: {
-      formatDate: function(str) {
-          let words = str.split('T')
-          return words[0]
-      }
-  }
+    methods: {
+        formatDate: function(str) {
+            let words = str.split('T')
+            return words[0]
+        }
+    }
 }
 </script>
 
