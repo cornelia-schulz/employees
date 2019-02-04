@@ -1,11 +1,11 @@
 <template>
 <header>
 <div class="left">
-    <h1>Company Name</h1>
-    <p>Company Motto</p>
+    <h1>{{ companyName }}</h1>
+    <p>{{ companyMotto }}</p>
 </div>
 <div class="right">
-    <p>Since {Company Establishment Date}</p>
+    <p>Since {{ formatDate(companyEst) }}</p>
 </div>
 
 </header>
@@ -14,14 +14,21 @@
 <script>
 export default {
   name: 'Header',
-  data() {
-    return {
-    }
+  props: {
+        companyName: String,
+        companyMotto: String,
+        companyEst: Date
+    },
+  methods: {
+      formatDate: function(str) {
+          let words = str.split('T')
+          return words[0]
+      }
   }
 }
 </script>
 
-<style>
+<style scoped>
 header {
     font-family: 'Roboto', sans-serif;
     display: flex;
