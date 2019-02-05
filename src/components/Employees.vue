@@ -68,7 +68,7 @@ export default {
         },
         shortenBio: function(text) {
             if (text.length > 70) {
-                return text.substring(0, 60)
+                return text.substring(0, 56)
             } else {
                 return text
             }
@@ -90,20 +90,22 @@ main {
   flex-wrap: wrap;
   margin: 0 auto;
   padding-top: 2%;
+  font-weight: 500;
+  font-size: 1.1em;
 }
 
 .card {
   display: flex;
   flex-direction: row;
   border: 2px solid rgba(96,96,96,1);
-  height: 120px;
+  height: 130px;
   margin: 1%;
   overflow: hidden;
   width: 31%;
 }
 
 h5 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-top: 5px;
 }
 
@@ -114,13 +116,14 @@ img {
 }
 
 .bold {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .card-text {
   margin: 1%;
   width: 225px;
   padding-bottom: 5px;
+  line-height: 1.3em;
 }
 
 .modal-footer {
