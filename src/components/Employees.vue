@@ -25,7 +25,7 @@ export default {
     name: 'Employees',
     data() {
         return {
-            selectedEmployees: employees
+            selectedEmployees: JSON.parse(JSON.stringify( employees ))
         }
     },
     props: {
@@ -37,14 +37,12 @@ export default {
     created() {
         this.sort('firstName')
         var vm = this
-        console.log(vm.allEmployees)
         serverBus.$on('sortSelected', (selected) => {
             vm.sort(selected)
         })
         serverBus.$on('searchNames', (searched) => {
-          console.log(vm.allEmployees)
           if(searched === ''){
-            vm.selectedEmployees.employees = vm.allEmployees
+            vm.selectedEmployees.employees = JSON.parse(JSON.stringify( vm.employees ))
           } else {
             let result = vm.employees.find(s => s.firstName === searched)
             let results = []
