@@ -37,7 +37,7 @@ header {
     background-color: rgba(235,235,235,1);
     padding-left: 3%;
     padding-right: 3%;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid rgba(96,96,96,1);
     border-right: 1px solid black;
 }
 

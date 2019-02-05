@@ -54,4 +54,8 @@ p {
     display: inline-block;
 }
 
+.employee-right p {
+    line-height: 1.2em;
+}
+
 </style>

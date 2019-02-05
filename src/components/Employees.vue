@@ -5,7 +5,7 @@
           <img :src="employee.avatar">
           <div class="card-text">
             <h5 class="bold">{{ employee.firstName }} {{ employee.lastName }}</h5>
-            <p class="card-text">{{ employee.bio }}</p>
+            <p class="card-text-p">{{ shortenBio(employee.bio) }}</p>
           </div>
         </div>
           <b-modal centered :id="'modalEmployee'+employee.id">
@@ -49,6 +49,13 @@ export default {
           }
           return 0
       })
+      },
+      shortenBio: function(text) {
+        if(text.length > 70) {
+          return text.substring(0,60)
+        } else {
+          return text
+        }
       }
     }
 }
@@ -71,8 +78,8 @@ main {
 .single-card {
   display: flex;
   flex-direction: row;
-  border: 1px solid lightgray;
-  height: 110px;
+  border: 2px solid rgba(96,96,96,1);
+  height: 130px;
   margin: 3%;
   overflow: hidden;
   flex-grow: 1;
@@ -80,8 +87,8 @@ main {
 }
 
 img {
-  width: 110px;
-  border: 1px solid lightgray;
+  width: 130px;
+  border: 2px solid rgba(96,96,96,1);
 }
 
 .bold {
@@ -91,6 +98,7 @@ img {
 .card-text {
   margin: 1%;
   width: 200px;
+  padding-bottom: 5px;
 }
 
 .modal-footer {

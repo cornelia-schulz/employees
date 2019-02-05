@@ -50,8 +50,9 @@ export default {
 }
 
 h2 {
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 0;
+    font-size: 1.8rem;
 }
 
 input {
