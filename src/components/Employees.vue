@@ -1,6 +1,6 @@
 <template>
   <main id="employees">
-      <div class="cards" v-for="employee in employees" v-bind:key="employee.id">
+      <div class="cards" v-for="employee in selectedEmployees.employees" v-bind:key="employee.id">
         <div class="single-card" v-b-modal="'modalEmployee' + employee.id">
           <img :src="employee.avatar">
           <div class="card-text">
@@ -23,6 +23,11 @@ import {
 } from '../main.js'
 export default {
     name: 'Employees',
+    data() {
+        return {
+            selectedEmployees: employees
+        }
+    },
     props: {
         employees: Array
     },
@@ -32,10 +37,23 @@ export default {
     created() {
         this.sort('firstName')
         var vm = this
+        console.log(vm.allEmployees)
         serverBus.$on('sortSelected', (selected) => {
             vm.sort(selected)
         })
-    },
+        serverBus.$on('searchNames', (searched) => {
+          console.log(vm.allEmployees)
+          if(searched === ''){
+            vm.selectedEmployees.employees = vm.allEmployees
+          } else {
+            let result = vm.employees.find(s => s.firstName === searched)
+            let results = []
+            results.push(result)
+            vm.selectedEmployees.employees = results
+            return result
+            }
+          })
+        },
     methods: {
       sort: function(selected) {
         this.employees.sort(function(a, b) {
@@ -79,7 +97,7 @@ main {
   display: flex;
   flex-direction: row;
   border: 2px solid rgba(96,96,96,1);
-  height: 130px;
+  height: 120px;
   margin: 3%;
   overflow: hidden;
   flex-grow: 1;
@@ -87,7 +105,7 @@ main {
 }
 
 img {
-  width: 130px;
+  width: 120px;
   border: 2px solid rgba(96,96,96,1);
 }
 
@@ -97,7 +115,7 @@ img {
 
 .card-text {
   margin: 1%;
-  width: 200px;
+  width: 225px;
   padding-bottom: 5px;
 }
 

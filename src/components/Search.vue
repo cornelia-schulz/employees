@@ -11,7 +11,7 @@
                 <option value="jobTitle">job title</option>
             </select>
             <label for="search">Search</label>
-            <input type="text">
+            <input type="text" v-model="searched" @keyup.enter="getSearch($event)">
         </div>
     </div>
 </template>
@@ -24,7 +24,8 @@ export default {
     name: 'Search',
     data() {
         return {
-            selected: 'firstName'
+            selected: 'firstName',
+            searched: ''
         }
     },
     props: {
@@ -33,6 +34,9 @@ export default {
     methods: {
         getSelected: function(event) {
             serverBus.$emit('sortSelected', event.target.value)
+        },
+        getSearch: function(event) {
+            serverBus.$emit('searchNames', event.target.value)
         }
     }
 }
@@ -52,18 +56,22 @@ export default {
 h2 {
     font-weight: 400;
     margin-bottom: 0;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 input {
     height: 1.6em;
     border: 2px solid gray;
+    width: 140px;
+    font-size: 12px;
 }
 
 select {
     height: 1.5em;
     border: 2px solid gray;
     margin-right: 2%;
+    width: 160px;
+    font-size: 12px;
 }
 
 .filters, .title {
