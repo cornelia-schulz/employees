@@ -71,5 +71,20 @@ export default {
 .modal-footer {
   display: none !important;
 }
+.modal-header {
+  height: 0;
+  border-bottom: 0px !important;
+  padding: 0 !important;
+}
 
+.modal-header button {
+  margin-top: -95px !important;
+  font-size: 4em;
+  font-weight: 400;
+  padding-right: 5px !important;
+}
+
+.modal-content {
+  padding: 10px;
+}
 </style>

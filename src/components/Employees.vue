@@ -8,7 +8,7 @@
             <p class="card-text">{{ employee.bio }}</p>
           </div>
         </div>
-          <b-modal :id="'modalEmployee'+employee.id">
+          <b-modal centered :id="'modalEmployee'+employee.id">
             <Employee :employee="employee" />
           </b-modal>
     </div>
