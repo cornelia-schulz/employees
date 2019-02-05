@@ -60,18 +60,18 @@ h2 {
 }
 
 input {
-    height: 1.6em;
-    border: 2px solid gray;
+    height: 1.9em;
+    border: 3px solid gray;
     width: 140px;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 select {
-    height: 1.5em;
-    border: 2px solid gray;
+    height: 1.9em;
+    border: 3px solid gray;
     margin-right: 2%;
     width: 160px;
-    font-size: 12px;
+    font-size: 11px;
     background-image:
     linear-gradient(45deg, transparent 50%, #EBEBEB 50%),
     linear-gradient(135deg, #EBEBEB 50%, transparent 50%),
