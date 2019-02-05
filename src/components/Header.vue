@@ -1,14 +1,13 @@
 <template>
-<header>
-<div class="left">
-    <h1>{{ companyName }}</h1>
-    <p>{{ companyMotto }}</p>
-</div>
-<div class="right">
-    <p>Since {{ formatDate(companyEst) }}</p>
-</div>
-
-</header>
+    <header>
+        <div class="left">
+            <h1>{{ companyName }}</h1>
+            <p>{{ companyMotto }}</p>
+        </div>
+        <div class="right">
+            <p>Since {{ formatDate(companyEst) }}</p>
+        </div>
+    </header>
 </template>
 
 <script>
