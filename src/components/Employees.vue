@@ -1,13 +1,11 @@
 <template>
   <main id="employees">
-      <div class="cards" v-for="employee in selectedEmployees.employees" v-bind:key="employee.id">
-        <div class="single-card" v-b-modal="'modalEmployee' + employee.id">
+      <div class="card" v-for="employee in selectedEmployees.employees" v-bind:key="employee.id" v-b-modal="'modalEmployee' + employee.id">
           <img :src="employee.avatar">
           <div class="card-text">
             <h5 class="bold">{{ employee.firstName }} {{ employee.lastName }}</h5>
             <p class="card-text-p">{{ shortenBio(employee.bio) }}</p>
           </div>
-        </div>
           <b-modal centered :id="'modalEmployee'+employee.id">
             <Employee :employee="employee" />
           </b-modal>
@@ -44,7 +42,7 @@ export default {
           if(searched === ''){
             vm.selectedEmployees.employees = JSON.parse(JSON.stringify( vm.employees ))
           } else {
-            let result = vm.employees.find(s => s.firstName === searched)
+            let result = vm.employees.find(s => s.firstName.toUpperCase() === searched.toUpperCase())
             let results = []
             results.push(result)
             vm.selectedEmployees.employees = results
@@ -54,7 +52,7 @@ export default {
         },
     methods: {
       sort: function(selected) {
-        this.employees.sort(function(a, b) {
+        this.selectedEmployees.employees.sort(function(a, b) {
           let keyA = a[selected].toUpperCase()
           let keyB = b[selected].toUpperCase()
           if (keyA < keyB) {
@@ -86,20 +84,14 @@ main {
   padding-top: 2%;
 }
 
-.cards {
-  display: flex;
-  flex: 1;
-}
-
-.single-card {
+.card {
   display: flex;
   flex-direction: row;
   border: 2px solid rgba(96,96,96,1);
   height: 120px;
-  margin: 3%;
+  margin: 1%;
   overflow: hidden;
-  flex-grow: 1;
-  width: 33%;
+  width: 31%;
 }
 
 img {
