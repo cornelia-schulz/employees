@@ -42,18 +42,13 @@ export default {
             if (searched === '') {
                 vm.selectedEmployees.employees = JSON.parse(JSON.stringify(vm.employees))
             } else {
-                let result = vm.employees.find(s => s.firstName.toUpperCase() === searched.toUpperCase())
-                let results = []
-                if (typeof result !== 'undefined') {
-                    results.push(result)
-
-                } else {
-                    result = vm.employees.find(s => s.lastName.toUpperCase() === searched.toUpperCase())
-                    if (typeof result !== 'undefined') {
-                        results.push(result)
-                    }
-                }
-                vm.selectedEmployees.employees = results
+                let firstNames = vm.getSearch(searched, 'firstName')
+                let lastNames = vm.getSearch(searched, 'lastName')
+                let names = [].concat(
+                    firstNames.filter(obj1 => lastNames.every(obj2 => obj1.id !== obj2.id)),
+                    lastNames.filter(obj2 => firstNames.every(obj1 => obj2.id !== obj1.id))
+                )
+                vm.selectedEmployees.employees = names
             }
         })
     },
@@ -77,6 +72,12 @@ export default {
             } else {
                 return text
             }
+        },
+        getSearch(searchWord, prop) {
+            let search = this.selectedEmployees.employees.filter((s) => {
+                return s[prop].toLowerCase().includes(searchWord.toLowerCase())
+            })
+            return search
         }
     }
 }
@@ -101,9 +102,15 @@ main {
   width: 31%;
 }
 
+h5 {
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
 img {
   width: 120px;
   border: 2px solid rgba(96,96,96,1);
+  margin-right: 4px;
 }
 
 .bold {
@@ -119,5 +126,4 @@ img {
 .modal-footer {
   display: none !important;
 }
-
 </style>

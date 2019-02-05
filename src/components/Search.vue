@@ -11,7 +11,7 @@
                 <option value="jobTitle">job title</option>
             </select>
             <label for="search">Search</label>
-            <input type="text" v-model="searched" @keyup.enter="getSearch($event)">
+            <input type="text" v-model="searched" @keyup="getSearch($event)">
         </div>
     </div>
 </template>
@@ -72,6 +72,16 @@ select {
     margin-right: 2%;
     width: 160px;
     font-size: 12px;
+    background-image:
+    linear-gradient(45deg, transparent 50%, #EBEBEB 50%),
+    linear-gradient(135deg, #EBEBEB 50%, transparent 50%),
+    linear-gradient(to right, #eee, #fff);
+  background-position:
+    calc(100%) calc(1em + 2px),
+    calc(100%) calc(1em + 2px),
+    100% 0;
+  background-size: 19px;
+  background-repeat: no-repeat;
 }
 
 .filters, .title {
