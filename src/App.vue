@@ -57,6 +57,8 @@ export default {
   font-size: 4em;
   font-weight: 400;
   padding-right: 5px !important;
+  opacity: 1;
+  text-shadow: none;
 }
 
 .modal-content {

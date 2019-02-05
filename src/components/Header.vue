@@ -21,8 +21,12 @@ export default {
     },
     methods: {
         formatDate: function(str) {
-            let words = str.split('T')
-            return words[0]
+            let established = new Date(str)
+            let day = established.getDate()
+            let month = established.getMonth() + 1
+            let year = established.getFullYear()
+            let date = day + '-' + month + '-' + year
+            return date
         }
     }
 }

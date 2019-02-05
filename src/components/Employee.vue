@@ -2,7 +2,7 @@
     <div class="employee">
         <div class="employee-left">
             <img :src="employee.avatar" :alt="employee.lastName">
-            <p>{{ employee.jobTitle }}<br>
+            <p><span class="bold">{{ employee.jobTitle }}</span><br>
             {{ employee.age }}<br>
             {{ formatDate(employee.dateJoined) }}</p>
         </div>
@@ -21,8 +21,12 @@ export default {
     },
     methods: {
         formatDate: function(str) {
-            let words = str.split('T')
-            return words[0]
+            let dateJoined = new Date(str)
+            let day = dateJoined.getDate()
+            let month = dateJoined.getMonth() + 1
+            let year = dateJoined.getFullYear()
+            let date = day + '/' + month + '/' + year
+            return date
         }
     }
 }
@@ -34,12 +38,20 @@ export default {
     justify-content: space-around;
 }
 
+.bold {
+    font-weight: 600;
+}
+
 p {
     padding-top: 5px;
 }
 
 .employee-left {
     margin-right: 25px;
+}
+
+.employee-left img {
+    border: 2px solid rgba(96,96,96,1);
 }
 
 .employee-right {

@@ -23,7 +23,7 @@ export default {
     name: 'Employees',
     data() {
         return {
-            selectedEmployees: JSON.parse(JSON.stringify( employees ))
+            selectedEmployees: JSON.parse(JSON.stringify(employees))
         }
     },
     props: {
@@ -39,38 +39,45 @@ export default {
             vm.sort(selected)
         })
         serverBus.$on('searchNames', (searched) => {
-          if(searched === ''){
-            vm.selectedEmployees.employees = JSON.parse(JSON.stringify( vm.employees ))
-          } else {
-            let result = vm.employees.find(s => s.firstName.toUpperCase() === searched.toUpperCase())
-            let results = []
-            results.push(result)
-            vm.selectedEmployees.employees = results
-            return result
+            if (searched === '') {
+                vm.selectedEmployees.employees = JSON.parse(JSON.stringify(vm.employees))
+            } else {
+                let result = vm.employees.find(s => s.firstName.toUpperCase() === searched.toUpperCase())
+                let results = []
+                if (typeof result !== 'undefined') {
+                    results.push(result)
+
+                } else {
+                    result = vm.employees.find(s => s.lastName.toUpperCase() === searched.toUpperCase())
+                    if (typeof result !== 'undefined') {
+                        results.push(result)
+                    }
+                }
+                vm.selectedEmployees.employees = results
             }
-          })
-        },
+        })
+    },
     methods: {
-      sort: function(selected) {
-        this.selectedEmployees.employees.sort(function(a, b) {
-          let keyA = a[selected].toUpperCase()
-          let keyB = b[selected].toUpperCase()
-          if (keyA < keyB) {
-              return -1
-          }
-          if (keyA > keyB) {
-              return 1
-          }
-          return 0
-      })
-      },
-      shortenBio: function(text) {
-        if(text.length > 70) {
-          return text.substring(0,60)
-        } else {
-          return text
+        sort: function(selected) {
+            this.selectedEmployees.employees.sort(function(a, b) {
+                let keyA = a[selected].toUpperCase()
+                let keyB = b[selected].toUpperCase()
+                if (keyA < keyB) {
+                    return -1
+                }
+                if (keyA > keyB) {
+                    return 1
+                }
+                return 0
+            })
+        },
+        shortenBio: function(text) {
+            if (text.length > 70) {
+                return text.substring(0, 60)
+            } else {
+                return text
+            }
         }
-      }
     }
 }
 </script>
