@@ -1,6 +1,5 @@
 <template>
   <main id="employees">
-      <!-- {{selectedEmployees}} -->
       <div class="card" v-for="employee in selectedEmployees" v-bind:key="employee.id" v-b-modal="'modalEmployee' + employee.id">
           <img :src="employee.avatar">
           <div class="card-text">
@@ -46,13 +45,11 @@ export default {
             if (searched === '') {
                 vm.selectedEmployees = vm.employees
             } else {
-                let firstNames = vm.getSearch(searched, 'firstName')
-                let lastNames = vm.getSearch(searched, 'lastName')
-                let names = [].concat(
-                    firstNames.filter(obj1 => lastNames.every(obj2 => obj1.id !== obj2.id)),
-                    lastNames.filter(obj2 => firstNames.every(obj1 => obj2.id !== obj1.id))
-                )
-                vm.selectedEmployees = names
+                vm.selectedEmployees = vm.employees
+                vm.selectedEmployees = 
+                vm.selectedEmployees.filter(employee => employee.firstName.toLowerCase().indexOf(searched)>-1 
+                                         || employee.lastName.toLowerCase().indexOf(searched)>-1)
+                
             }
         })
     },
@@ -76,12 +73,6 @@ export default {
             } else {
                 return text
             }
-        },
-        getSearch(searchWord, prop) {
-            let search = this.selectedEmployees.filter((s) => {
-                return s[prop].toLowerCase().includes(searchWord.toLowerCase())
-            })
-            return search
         }
     }
 }
