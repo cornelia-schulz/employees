@@ -42,15 +42,10 @@ export default {
             vm.sort(selected)
         })
         serverBus.$on('searchNames', (searched) => {
-            if (searched === '') {
-                vm.selectedEmployees = vm.employees
-            } else {
                 vm.selectedEmployees = vm.employees
                 vm.selectedEmployees =
                     vm.selectedEmployees.filter(employee => employee.firstName.toLowerCase().indexOf(searched) > -1 ||
                         employee.lastName.toLowerCase().indexOf(searched) > -1)
-
-            }
         })
     },
     methods: {
@@ -77,7 +72,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-
-</style>
