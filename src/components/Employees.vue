@@ -31,8 +31,8 @@ export default {
     components: {
         Employee
     },
-    beforeCreate(){
-        
+    beforeCreate() {
+
     },
     created() {
         this.selectedEmployees = this.employees.map(a => Object.assign({}, a))
@@ -46,10 +46,10 @@ export default {
                 vm.selectedEmployees = vm.employees
             } else {
                 vm.selectedEmployees = vm.employees
-                vm.selectedEmployees = 
-                vm.selectedEmployees.filter(employee => employee.firstName.toLowerCase().indexOf(searched)>-1 
-                                         || employee.lastName.toLowerCase().indexOf(searched)>-1)
-                
+                vm.selectedEmployees =
+                    vm.selectedEmployees.filter(employee => employee.firstName.toLowerCase().indexOf(searched) > -1 ||
+                        employee.lastName.toLowerCase().indexOf(searched) > -1)
+
             }
         })
     },
@@ -79,49 +79,5 @@ export default {
 </script>
 
 <style scoped>
-main {
-  width: 95%;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  padding-top: 2%;
-  font-weight: 500;
-  font-size: 1.1em;
-}
 
-.card {
-  display: flex;
-  flex-direction: row;
-  border: 2px solid rgba(96,96,96,1);
-  height: 130px;
-  margin: 1%;
-  overflow: hidden;
-  width: 31%;
-}
-
-h5 {
-  font-size: 1.3rem;
-  margin-top: 5px;
-}
-
-img {
-  width: 120px;
-  border: 2px solid rgba(96,96,96,1);
-  margin-right: 4px;
-}
-
-.bold {
-  font-weight: 700;
-}
-
-.card-text {
-  margin: 1%;
-  width: 225px;
-  padding-bottom: 5px;
-  line-height: 1.3em;
-}
-
-.modal-footer {
-  display: none !important;
-}
 </style>

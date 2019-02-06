@@ -1,0 +1,271 @@
+.container {
+    width: 95%;
+    border-right: 1px solid lightgray;
+    padding: 0px;
+  }
+  
+/*=== Header ===*/
+
+header {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(235,235,235,1);
+    padding-left: 3%;
+    padding-right: 3%;
+    border-bottom: 2px solid rgba(96,96,96,1);
+    border-right: 1px solid black;
+}
+
+h1 {
+    font-weight: 500;
+    margin-bottom: 1%;
+}
+
+.header-left p {
+    margin-top: 0
+}
+
+.header-right {
+    margin-top: auto;
+}
+
+/*=== Search ===*/
+
+#search {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    width: 95%;
+    margin: 0 auto;
+    border-bottom: 2px solid lightgrey;
+    justify-content: space-between;
+    padding-top: 2%;
+}
+
+h2 {
+    font-weight: 400;
+    margin-bottom: 0;
+    font-size: 1.6rem;
+}
+
+input {
+    height: 1.9em;
+    border: 3px solid gray;
+    width: 140px;
+    font-size: 11px;
+}
+
+select {
+    height: 1.9em;
+    border: 3px solid gray;
+    margin-right: 2%;
+    width: 160px;
+    font-size: 11px;
+    background-image:
+    linear-gradient(45deg, transparent 50%, #EBEBEB 50%),
+    linear-gradient(135deg, #EBEBEB 50%, transparent 50%),
+    linear-gradient(to right, #eee, #fff);
+  background-position:
+    calc(100%) calc(1em + 2px),
+    calc(100%) calc(1em + 2px),
+    100% 0;
+  background-size: 19px;
+  background-repeat: no-repeat;
+}
+
+.filters, .title {
+    padding-top: 2%;
+    margin-top: auto;
+    font-size: 0.9em;
+}
+
+.filters {
+    width: 50%;
+    text-align: right;
+}
+
+.title {
+    margin-bottom: 1%;
+}
+
+  
+/*=== Employees ===*/
+
+main {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding-top: 2%;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid rgba(96,96,96,1);
+    height: 130px;
+    margin: 1%;
+    overflow: hidden;
+    width: 31%;
+}
+
+h5 {
+    font-size: 1.3rem;
+    margin-top: 5px;
+}
+
+.card img {
+    width: 120px;
+    border: 2px solid rgba(96,96,96,1);
+    margin-right: 4px;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.card-text {
+    margin: 1%;
+    width: 225px;
+    padding-bottom: 5px;
+    line-height: 1.3em;
+}
+
+/*=== Employee ===*/
+
+.employee {
+    display: flex;
+    justify-content: space-around;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+p {
+    padding-top: 5px;
+}
+
+.employee-left {
+    margin-right: 25px;
+}
+
+.employee-left img {
+    border: 2px solid rgba(96,96,96,1);
+}
+
+.employee-right {
+    padding-right: 30px;
+}
+
+.employee-right h2 {
+    height: 128px;
+    padding-top: 80px;
+    margin-bottom: 0;
+    border-bottom: 2px solid lightgray;
+    display: inline-block;
+}
+
+.employee-right p {
+    line-height: 1.2em;
+}
+
+/*=== Modal ===*/
+
+.modal-footer {
+    display: none;
+}
+
+.modal-header {
+    height: 0;
+    border-bottom: 0px !important;
+    padding: 0 !important;
+}
+
+.modal-header button {
+    margin-top: -95px !important;
+    font-size: 4em;
+    font-weight: 400;
+    padding-right: 5px !important;
+    opacity: 1;
+    text-shadow: none;
+}
+
+.modal-content {
+    padding: 10px;
+}
+
+
+/*=== Media Queries ===*/
+
+@media (max-width: 992px){
+    header {
+        flex-direction: column;
+    }
+
+    #search {
+        flex-direction: column;
+    }
+
+    .filters {
+        display: flex;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .filters label {
+        margin-right: 5px;
+    }
+
+    .card {
+        width: 45%;
+      }
+}
+
+@media (max-width: 590px){
+    header {
+        flex-direction: column;
+    }
+
+    .header-left p {
+        margin-bottom: 0
+    }
+
+    #search {
+        flex-direction: column;
+    }
+
+    .filters {
+        display: flex;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .filters label {
+        margin-right: 5px;
+    }
+
+    .filters select {
+        width: 100px;
+    }
+
+    .card {
+        width: 100%;
+      }
+
+    .employee {
+        flex-direction: column;
+    }
+
+    .employee-left {
+        display: flex;
+    }
+
+    .employee-right h2 {
+        padding-top: 10px;
+        height: 50px;
+    }
+}
